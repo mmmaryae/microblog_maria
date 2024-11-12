@@ -22,3 +22,35 @@ VALUES('ana','ana@gmail.com', '222senac', 'editor');
 
 INSERT INTO usuarios (nome,email,senha,tipo)
 VALUES('giovanna','giovanna@gmail.com', '132senac', 'editor');
+
+## Inserindo noticias
+
+INSERT INTO noticias (titulo, texto, resumo, imagem, usuario_id)
+
+VALUES (
+    'Meu pai ganhou na mega-sena',
+    'Estou rico, tchau para vocês',
+    'Jogou e ganhou',
+    'premio.jpg',
+    4
+);
+
+INSERT INTO noticias (titulo, texto, resumo, imagem, usuario_id)
+
+VALUES (
+    'Faça um bolo BB(Bom e Barato)',
+    'Receita simples! com ingredientes que você tem na sua casa',
+    'Bolo de cenoura',
+    'bolo.jpg',
+    5
+);
+
+INSERT INTO noticias (titulo, texto, resumo, imagem, usuario_id)
+
+VALUES (
+    'Tipos de flores comestíveis',
+    'Normalmente flores comestíveis não são encontradas na rua',
+    'flores comestíveis',
+    'flores.jpg',
+    6
+);
