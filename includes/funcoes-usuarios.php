@@ -46,7 +46,7 @@ function atualizarUsuarios($conexao, $id, $nome, $email, $senha, $tipo)
             nome = '$nome',
             email = '$email',
             senha = '$senha',
-            tipo = '$tipo',
+            tipo = '$tipo'
                 WHERE id = $id"; //Não esquecer
 
     //copie e cole aqui o mysqli_query da função atualizarUsuarios

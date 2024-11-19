@@ -8,11 +8,43 @@ $id = $_GET['id'];
 //Chamamos a função par carregar os dados da pessoa através do id
 $dadosUsuario = listarUmUsuario($conexao, $id);
 
+
+//Verificando se o botão do formúlario foi acionado 
+
+if (isset($_POST['atualizar'])) {
+	//Pegando os dados dos campos
+	$nome = $_POST['nome'];
+	$email = $_POST['email'];
+	$tipo = $_POST['tipo'];
+	$senha = $_POST['senha'];
+
+	/* Se a senha estiver vazia OU for a mesma */
+
+	if (empty($_POST['senha']) || password_verify($_POST['senha'], $dadosUsuario['senha'])) {
+		//manter a mesma senha(copiamos a senha do banco para uma variável)
+		$senha = $dadosUsuario['senha'];
+	} else {
+		//codificar a nova semha
+		$senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
+	}
+
+//Redirecionamos para a página com a lista de usuarios
+	atualizarUsuarios($conexao,$id,$nome,$email,$senha,$tipo);
+
+
+//Redirecionamos para a pag com a lista de usuarios
+header("location:usuarios.php");
+
+
+}
+
+
 ?>
 
-<!-- 
-teste que se faz 1 vez
-<pre> var_dump($dadosUsuario) </pre> -->
+
+
+
+
 
 
 
