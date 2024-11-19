@@ -3,7 +3,7 @@
 $servidor = "localhost";
 $usuario = "root";
 $senha = "";
-$banco = "microblog_aula";
+$banco = "microblog_maria";
 
 // Acessar a função de conexão ao servidor de BD
 $conexao = mysqli_connect($servidor, $usuario, $senha, $banco);
