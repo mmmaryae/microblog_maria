@@ -1,15 +1,27 @@
-<?php 
+<?php
 require "../includes/cabecalho-admin.php";
+require "../includes/funcoes-usuarios.php";
+
+// Capturando o id passado via URL
+$id = $_GET['id'];
+
+//Chamamos a função par carregar os dados da pessoa através do id
+$dadosUsuario = listarUmUsuario($conexao, $id);
+
 ?>
+
+<pre><?= var_dump($dadosUsuario) ?></pre>
+
+
 
 
 <div class="row">
 	<article class="col-12 bg-white rounded shadow my-1 py-4">
-		
+
 		<h2 class="text-center">
-		Atualizar dados do usuário
+			Atualizar dados do usuário
 		</h2>
-				
+
 		<form autocomplete="off" class="mx-auto w-75" action="" method="post" id="form-atualizar" name="form-atualizar">
 
 			<div class="mb-3">
@@ -35,15 +47,14 @@ require "../includes/cabecalho-admin.php";
 					<option value="admin">Administrador</option>
 				</select>
 			</div>
-			
+
 			<button class="btn btn-primary" name="atualizar"><i class="bi bi-arrow-clockwise"></i> Atualizar</button>
 		</form>
-		
+
 	</article>
 </div>
 
 
-<?php 
+<?php
 require "../includes/rodape-admin.php";
 ?>
-
