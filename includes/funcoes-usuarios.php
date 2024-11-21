@@ -17,7 +17,7 @@ function inserirUsuario($conexao, $nome, $email, $senha, $tipo)
             VALUES('$nome', '$email', '$tipo', '$senha')";
 
     // Executando o comando no banco via PHP
-   executarQuery($conexao, $sql);
+    executarQuery($conexao, $sql);
 }
 
 
@@ -69,4 +69,11 @@ function excluirUsuario($conexao, $id)
 {
     $sql = "DELETE FROM usuarios WHERE id = $id";
     executarQuery($conexao, $sql);
+}
+
+
+function buscarUsuario($conexao, $email){
+    $sql = "SELECT * FROM usuarios WHERE email = '$email'";
+    $resultado = executarQuery($conexao, $sql);
+    return mysqli_fetch_assoc($resultado);
 }
