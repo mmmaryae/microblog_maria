@@ -19,8 +19,23 @@ if (isset($_POST['entrar'])) {
 	//1) Buscando no banco de dados o usuário através do e-mail
 
 
-$usuario = buscarUsuario($conexao, $email);
+	$usuario = buscarUsuario($conexao, $email);
 
+
+	//2) Tendo um usuario valido, vamos verificar a senha digitada comparando com a senha cadastrada no banco de dados
+
+
+	if ($usuario !== null && password_verify($senha, $usuario['senha'])) {
+		login($usuario['id'], $usuario['nome'], $usuario['tipo']);
+
+		//Redirecionar para admin/index.php
+		header("location:admin/index.php");
+		die();
+	} else {
+		//Senão, algo está errado (email e/ou a senha) e não pode entrar
+
+		header("location:login.php?dados_incorretos");
+	}
 }
 ?>
 
