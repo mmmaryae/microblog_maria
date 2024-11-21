@@ -1,5 +1,6 @@
 <?php
-
+require "../includes/funcoes-controle-de-acesso.php";
+verificarAcesso();
 require "../includes/funcoes-usuarios.php";
 //Pegando o id passado via URL
 
