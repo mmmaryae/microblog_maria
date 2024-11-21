@@ -29,13 +29,32 @@ function verificarAcesso()
 
 
 
-/* Se NÃO EXISTIR uma variável de sesão chamada "id",
+    /* Se NÃO EXISTIR uma variável de sesão chamada "id",
 então significa que o usuário não está logado*/
 
-//criterio para ver se não tem 'id' se n tem é pq não esta logado
+    //criterio para ver se não tem 'id' se n tem é pq não esta logado
     if (!isset($_SESSION['id'])) {
         session_destroy();
         header("location:../login.php?acesso_negado");
         die();
     }
+}
+
+//Funçaõ que será usada pelo formulário login.php
+
+function login($id, $nome, $tipo)
+{
+    //Criando variáveis de sesão
+    $_SESSION['id'] = $id;
+    $_SESSION['nome'] = $nome;
+    $_SESSION['tipo'] = $tipo;
+}
+
+function logout()
+{
+
+    // Função que será usada quando clicar no link Sair
+    session_destroy();
+    header("location:../login.php?saiu");
+    die();
 }
