@@ -58,3 +58,20 @@ function logout()
     header("location:../login.php?saiu");
     die();
 }
+
+
+/*Verificar o nivel/privileégio de acesso do usuário */
+
+
+function verificarNivel(){
+    if($_SESSION['tipo']!== 'admin'){
+        //Então, redirecione para a página nao-auto
+        header("location:nao-autorizado.php");
+        die();
+    }
+    
+}
+
+
+
+

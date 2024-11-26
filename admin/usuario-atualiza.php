@@ -1,7 +1,7 @@
 <?php
 require "../includes/cabecalho-admin.php";
 require "../includes/funcoes-usuarios.php";
-
+verificarNivel();
 // Capturando o id passado via URL
 $id = $_GET['id'];
 
