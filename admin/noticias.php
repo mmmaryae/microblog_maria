@@ -34,7 +34,9 @@ $listadeNoticias = lerNoticias($conexao, $idUsuario, $tipoUsuario);
 					<tr>
 						<th>Título</th>
 						<th>Data</th>
+                    <?php if($tipoUsuario === 'adimin'){ ?>
 						<th>Autor</th>
+                      <?php } ?>
 						<th class="text-center">Operações</th>
 					</tr>
 				</thead>
@@ -46,15 +48,18 @@ $listadeNoticias = lerNoticias($conexao, $idUsuario, $tipoUsuario);
 					<tr>
 						<td> <?=$noticia['titulo']?> </td>
 						<td><?=formataData($noticia['data'])?> </td>
+						<?php if($tipoUsuario === 'admin'){ ?>
 						<td><?=$noticia['nome']?> </td>
+						<?php } ?>
 						<td class="text-center">
 							<a class="btn btn-warning"
-								href="noticia-atualiza.php">
+						
+								href="noticia-atualiza.php?id=<?=($noticia['id'])?>"> 
 								<i class="bi bi-pencil"></i> Atualizar
 							</a>
 
 							<a class="btn btn-danger excluir"
-								href="noticia-exclui.php">
+								href="noticia-exclui.php?id=<?=($noticia['id'])?>">
 								<i class="bi bi-trash"></i> Excluir
 							</a>
 						</td>
