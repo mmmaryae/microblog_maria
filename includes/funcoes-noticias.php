@@ -62,11 +62,45 @@ function lerUmaNoticia($conexao, $idNoticia, $idUsuario, $tipoUsuario)
 
 
 // Usada em admin/noticia-atualiza.php
-function atualizarNoticia($conexao) {}
+function atualizarNoticia(
+    $conexao,
+    $titulo,
+    $texto,
+    $resumo,
+    $imagem,
+    $idNoticia,
+    $idUsuario,
+    $tipoUsuario
+) {
+
+    if ($tipoUsuario === 'admin') {
+        //Pode mudar QUALQUER notícia DESDEQUE ELE SAIBA QUAL
+        $sql = "UPDATE noticias SET titulo = '$titulo', texto = '$texto',
+    resumo = '$resumo', imagem = '$imagem'  WHERE id = $idNoticia";
+    } else {
+        //Senão, pode atualizar SOMESNTE AS SUAS PRÓPRIAS noticias
+
+        $sql = "UPDATE noticias SET titulo = '$titulo', texto = '$texto',
+    resumo = '$resumo', imagem = '$imagem'  WHERE id = $idNoticia AND usuario_id = $idUsuario";
+    }
+    executarQuery($conexao, $sql);
+}
 
 
 // Usada em admin/noticia-exclui.php
-function excluirNoticia($conexao) {}
+function excluirNoticia($conexao, $idNoticia, $idUsuario, $tipoUsuario)
+{
+
+    if ($tipoUsuario === 'admin') {
+        $sql = "DELETE FROM noticias 
+    WHERE  id = $idNoticia";
+    } else {
+        $sql = "DELETE FROM noticias
+    WHERE id = $idNoticia AND usuario_id = $idUsuario";
+    }
+
+    executarQuery($conexao, $sql);
+}
 
 /* *********** */
 

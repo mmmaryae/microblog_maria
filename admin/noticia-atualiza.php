@@ -8,10 +8,53 @@ $idNoticia = $_GET['id'];
 //Capturando o id do usuário que está logado
 $idusuario = $_SESSION['id'];
 //Capturando o tipo do usuário que está logado
-$tipoUsuario = $_SESSION ['tipo'];
+$tipoUsuario = $_SESSION['tipo'];
+
 $dadosDaNoticia = lerUmaNoticia(
-    $conexao, $idNoticia, $idusuario, $tipoUsuario
+    $conexao,
+    $idNoticia,
+    $idusuario,
+    $tipoUsuario
 );
+
+if (isset($_POST['atualizar'])) {
+    $titulo = $_POST['titulo'];
+    $texto = $_POST['texto'];
+    $resumo = $_POST['resumo'];
+    // Logica para a imagem
+
+    /* Se o campo "imagem" estiver vazio, então significa que o usuário NÃO QUER MUDAR DE IMAGEM. Portanto, a imagem que já existe continuará (será mantida). */
+
+
+    if (empty($_FILES['imagem']['name'])) {
+        //Pegamos a imagem/referência que já tem e colocamos na variável
+        $imagem = $_POST['imagem-existente'];
+    } else {
+
+        //Senão, pegamos a imagem/referência NOVA e colocamos na variàvel
+        $imagem = $_FILES['imagem']['name'];
+
+        // E em seguida, enviamos o arquivo pro servidor
+
+        upload($_FILES['imagem']);
+    }
+
+    atualizarNoticia(
+        $conexao,
+        $titulo,
+        $texto,
+        $resumo,
+        $imagem,
+        $idNoticia,
+        $idusuario,
+        $tipoUsuario
+    );
+
+    // Voltamos pra página de noticias.php
+
+}
+
+
 
 
 ?>
@@ -29,24 +72,24 @@ $dadosDaNoticia = lerUmaNoticia(
 
             <div class="mb-3">
                 <label class="form-label" for="titulo">Título:</label>
-            <input value = "<?=$dadosDaNoticia['titulo']?>" class="form-control" required type="text" id="titulo" name="titulo">
+                <input value="<?= $dadosDaNoticia['titulo'] ?>" class="form-control" required type="text" id="titulo" name="titulo">
             </div>
 
             <div class="mb-3">
                 <label class="form-label" for="texto">Texto:</label>
-                <textarea class="form-control" required name="texto" id="texto" cols="50" rows="6"><?=$dadosDaNoticia['texto']?></textarea>
+                <textarea class="form-control" required name="texto" id="texto" cols="50" rows="6"><?= $dadosDaNoticia['texto'] ?></textarea>
             </div>
 
             <div class="mb-3">
                 <label class="form-label" for="resumo">Resumo (máximo de 300 caracteres):</label>
                 <span id="maximo" class="badge bg-danger">0</span>
-                <textarea class="form-control" required name="resumo" id="resumo" cols="50" rows="2" maxlength="300"><?=$dadosDaNoticia['resumo']?></textarea>
+                <textarea class="form-control" required name="resumo" id="resumo" cols="50" rows="2" maxlength="300"><?= $dadosDaNoticia['resumo'] ?></textarea>
             </div>
 
             <div class="mb-3">
                 <label for="imagem-existente" class="form-label">Imagem da notícia:</label>
                 <!-- campo somente leitura, meramente informativo -->
-                <input value = "<?=$dadosDaNoticia['imagem']?>"class="form-control" type="text" id="imagem-existente" name="imagem-existente" readonly>
+                <input value="<?= $dadosDaNoticia['imagem'] ?>" class="form-control" type="text" id="imagem-existente" name="imagem-existente" readonly>
             </div>
 
             <div class="mb-3">
