@@ -8,4 +8,4 @@ $idNoticia = $_GET['id'];
 $idUsuario =$_SESSION['id'];
 $tipoUsuario = $_SESSION['tipo'];
 excluirNoticia($conexao, $idNoticia, $idUsuario, $tipoUsuario);
-header("location:noticias.php");
+header("location:noticias.php");                   
