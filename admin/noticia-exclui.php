@@ -18,6 +18,5 @@ $tipoUsuario = $_SESSION['tipo'];
 
 //Execultando o delete da noticia no banco de dados
 excluirNoticia($conexao, $idNoticia, $idUsuario, $tipoUsuario);
-
 //Redirecionando para a pagina com a lista de noticias
 header("location:noticias.php");                   

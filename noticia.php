@@ -1,5 +1,13 @@
 <?php
-require "includes/cabecalho.php"; 
+require "includes/cabecalho.php";
+require "includes/funcoes-noticias.php";
+
+
+//Capturando o id da noticia via URL 
+$idNoticia = $_GET['id'];
+$dadosDaNoticia = lerNoticiaCompleta($conexao, $idNoticia);
+
+var_dump($dadosDaNoticia);
 ?>
 
 
