@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 12/11/2024 às 21:19
+-- Tempo de geração: 20/05/2026 às 17:47
 -- Versão do servidor: 10.4.32-MariaDB
--- Versão do PHP: 8.0.30
+-- Versão do PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -43,7 +43,8 @@ CREATE TABLE `noticias` (
 
 INSERT INTO `noticias` (`id`, `data`, `titulo`, `texto`, `resumo`, `imagem`, `usuario_id`) VALUES
 (2, '2024-11-12 16:35:39', 'Faça um bolo BB(Bom e Barato)', 'Receita simples! com ingredientes que você tem na sua casa', 'Bolo de cenoura', 'bolo.jpg', 5),
-(3, '2024-11-12 16:39:08', 'Tipos de flores comestíveis', 'Normalmente flores comestíveis não são encontradas na rua', 'flores comestíveis', 'flores.jpg', 6);
+(3, '2024-11-12 16:39:08', 'Tipos de flores comestíveis', 'Normalmente flores comestíveis não são encontradas na rua', 'flores comestíveis', 'flores.jpg', 6),
+(4, '2026-05-20 12:12:41', 'Receita de bolo de chocolate fofinho', 'O bolo de chocolate é um clássico que nunca sai de moda. Com poucos ingredientes e preparo simples, você consegue um resultado macio e delicioso. Misture 2 xícaras de farinha, 1 xícara de achocolatado, 2 ovos, 1 xícara de leite, 1 xícara de óleo e 1 colher de fermento. Bata tudo no liquidificador, leve ao forno a 180°C por 40 minutos e pronto!', 'Aprenda a fazer um bolo de chocolate simples, fofinho e irresistível com ingredientes que você já tem em casa.', 'Captura de tela 2026-05-20 121221.png', 5);
 
 -- --------------------------------------------------------
 
@@ -64,9 +65,10 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nome`, `email`, `senha`, `tipo`) VALUES
-(4, 'Eduardo', 'maria13@gmail.com', '133senac', 'editor'),
-(5, 'ana', 'ana@gmail.com', '222senac', 'editor'),
-(6, 'giovanna', 'giovanna@gmail.com', '132senac', 'editor');
+(4, 'Eduardo', 'maria13@gmail.com', '$2y$10$uoKLD/UunXbCyKnIRpUYhOhFVSlEEPTVWu2ZxP5CmiO43MczGK/GO', 'editor'),
+(5, 'ana', 'ana@gmail.com', '$2y$10$uoKLD/UunXbCyKnIRpUYhOhFVSlEEPTVWu2ZxP5CmiO43MczGK/GO', 'editor'),
+(6, 'giovanna', 'giovanna@gmail.com', '$2y$10$uoKLD/UunXbCyKnIRpUYhOhFVSlEEPTVWu2ZxP5CmiO43MczGK/GO', 'editor'),
+(7, 'Admin', 'admin@gmail.com', '$2y$10$uoKLD/UunXbCyKnIRpUYhOhFVSlEEPTVWu2ZxP5CmiO43MczGK/GO', 'admin');
 
 --
 -- Índices para tabelas despejadas
@@ -94,13 +96,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de tabela `noticias`
 --
 ALTER TABLE `noticias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Restrições para tabelas despejadas
