@@ -1,10 +1,10 @@
 <?php 
-require "includes/cabecalho.php"; 
+require "includes/cabecalho.php";
+require "includes/conecta.php";        // 👈 adiciona essa linha
 require "includes/funcoes-noticias.php";
-$listaDeNoticias = lerTodasNoticias($conexao);
-// var_dump($listaDeNoticias);
-?>  
 
+$listaDeNoticias = lerTodasNoticias($conexao);
+?>
 
 <div class="row my-1 mx-md-n1">
 

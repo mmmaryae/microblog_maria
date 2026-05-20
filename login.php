@@ -1,39 +1,29 @@
 <?php
 require "includes/funcoes-controle-de-acesso.php";
+require "includes/conecta.php";
 require "includes/funcoes-usuarios.php";
 require "includes/cabecalho.php";
 
-//Verificando se o botão entar foi acionado
 if (isset($_POST['entrar'])) {
-	//Validando os campos (se estão vazios)
+
 	if (empty($_POST['email']) || empty($_POST['senha'])) {
 		header("locations:login.php?campos_obrigatorios");
 		die();
 	}
 
-	//Capturar email e senha 
 	$email = $_POST['email'];
 	$senha = $_POST['senha'];
 
-
-	//1) Buscando no banco de dados o usuário através do e-mail
-
-
+	$usuario = buscarUsuario($conexao, $email);
 	$usuario = buscarUsuario($conexao, $email);
 
-
-	//2) Tendo um usuario valido, vamos verificar a senha digitada comparando com a senha cadastrada no banco de dados
-
+	
 
 	if ($usuario !== null && password_verify($senha, $usuario['senha'])) {
 		login($usuario['id'], $usuario['nome'], $usuario['tipo']);
-
-		//Redirecionar para admin/index.php
 		header("location:admin/index.php");
 		die();
 	} else {
-		//Senão, algo está errado (email e/ou a senha) e não pode entrar
-
 		header("location:login.php?dados_incorretos");
 	}
 }
@@ -63,8 +53,6 @@ if (isset($_POST['entrar'])) {
 		</form>
 
 	</div>
-
-
 </div>
 
 <?php
